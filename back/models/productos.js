@@ -1,5 +1,4 @@
 const mongoose = require("mongoose")
-
 //esquema de productos
 const productosSchema =mongoose.Schema({
     nombre:{
@@ -40,13 +39,8 @@ const productosSchema =mongoose.Schema({
                 "Accesorios",
                 "Ropa",
                 "Calzado",
-                "Decoracion",
-                "Mascotas",
-                "Deportes",
-                "Cuidado e Higiene",
-                "Juguetes",
-                "Material Educativo",
-                "Miscelanea"
+                "Arte",
+                "Hogar"
             ]
         }
     },
