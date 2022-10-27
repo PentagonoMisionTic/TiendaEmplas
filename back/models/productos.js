@@ -1,78 +1,82 @@
-const mongoose = require("mongoose")
-//esquema de productos
-const productosSchema =mongoose.Schema({
+const mongoose=require("mongoose")
+
+
+//Esquema PRODUCTOS (EMPLAS)
+const productosSchema=mongoose.Schema({
     nombre:{
         type:String,
-        required:[true, "El nombre del producto es necesario, por favor registra un nombre."],
+        required:[true,"Nombre del producto: "],
         trim:true,
-        maxLength:[120,"El nombre del producto no debe exceder los 120 caracteres."]
+        maxLength:[120,"Para el nombre solo puedes usar un máximo de 120 caracteres."]
     },
     precio:{
-        type:Number,
-        required:[true, "por favor registre un precio para este producto"],
-        maxLength:[8,"Revise el precio por favor, el valor individual normalmente no excede $99.999.999"],
-        default:0.0
+        type: Number,
+        required:[true,"Precio del producto:"],
+        maxLength:[8, "El valor máximo permitido es: $ 99'999.999"],
+        default: 0.0
     },
     descripcion:{
-        type:String,
-        required:[true,"Por favor registre una descripción del producto para ser mostrada al cliente"]
+      type:String,
+      required:[true,"Descripcion del producto:"]
     },
     calificacion:{
-        type:Number,
-        default:0
+        type: Number,
+        default: 0
     },
-    imagen:[{
-        public_id:{
-            type:String,
-            required:true
-        },
-        url:{
-            type:String,
-            required:true
+    imagen:[
+        {
+            public_id:{
+                type:String,
+                required:true
+            },
+            url:{
+                type:String,
+                required:true
+            }
         }
-    }],
+    ],
     categoria:{
         type:String,
-        required:[true,"Por favor seleccione la categoría del producto."],
+        required:[true,"Seleccione la categoria en la que ubicará del producto:"],
         enum:{
             values:[
+                "Hogar",
                 "Accesorios",
-                "Ropa",
-                "Calzado",
                 "Arte",
-                "Hogar"
+                "Ropa y Calzado",
             ]
         }
     },
     vendedor:{
         type:String,
-        required:[true, "por favor registre el Nombre del proveedor del producto"]
+        required:[true,"Nombre del fabricante del producto"]
     },
     inventario:{
-        type:Number,
-        required:[true, "Por favor registre el stock del producto"],
-        maxLength:[5,"Verifique por favor, la cantidad máxima del producto no puede exceder los 99.999"],
+        type: Number,
+        required:[true, "Registre el stock disponible del producto"],
+        maxLength:[5,"La cantidad maxima autorizada en stock es: 99.999"],
         default:0
     },
     numCalificaciones:{
         type:Number,
         default:0
     },
-    opiniones:[{
-        nombreCliente:{
-            type:String,
-            required:true
-        },
-        rating:{
-            type:String,
-            required:true
-        },
-        fechaComentario:{
-            type:Date,
-            required:true,
-            default:Date.now
+    opiniones:[
+        {
+            nombreCliente:{
+                type:String,
+                required:true
+            },
+            rating:{
+                type:Number,
+                required:true
+            },
+            comentario:{
+                type:String,
+                required:true
+            }
         }
-    }],
+    ],
     fechaCreacion:{
         type:Date,
         default:Date.now
