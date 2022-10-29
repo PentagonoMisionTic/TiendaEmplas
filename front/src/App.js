@@ -4,7 +4,7 @@ import Header from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import Home from './components/Home';
 import { ProductDetails } from './components/products/ProductDetails';
-//Router traido desde react-router-dom (no confundir con el de express)
+//Router react-router-dom No Express
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 
