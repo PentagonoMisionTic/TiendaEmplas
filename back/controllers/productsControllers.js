@@ -1,6 +1,6 @@
 const producto=require("../models/productos")
 
-//Ver la lista de productos
+//Ver listado de productos
 exports.getProducts=async(req, res, next) =>{
     const productos = await producto.find();
     if(!productos){
@@ -30,7 +30,7 @@ exports.getProductById =async(req,res,next)=>{
         productoById
     })
 }
-//Crear nuevo producto /api/productos
+//Crear nuevo producto ruta /api/productos
 exports.newProduct=async(req, res,next)=>{
     const product=await producto.create(req.body);
     res.status(201).json({
@@ -40,26 +40,26 @@ exports.newProduct=async(req, res,next)=>{
 }
 //Update un producto
 exports.updateProduct = async(req,res,next)=>{
-    let product = await producto.findById(req.params.id); //variable de tipo modificable
-    if(!product) {//Verifica que el objeto no exista para finalizar el proceso
+    let product = await producto.findById(req.params.id); //variable modificable
+    if(!product) {//Verificar: Que existe objeto para finalizar el proceso
         return res.status(404).json({
             success:false,
             message:"No se encontro ese producto"
         })
     }
-    //si el objeto si existe, ejecutar la actualización
+    //Objeto existe, realizar la actualización
     product = await producto.findOneAndUpdate(req.params.id, req.body,{
         new:true,
         runValidators:true
     });
-    //Responder OK si el producto se actualizo
+    //Responder: OK si el producto actualizò
     res.status(200).json({
         sucess:true,
         message: "producto actualizado correctamente",
         product
     })
 }
-//Eliminamos el producto
+//Se elimina el producto
 exports.deleteProduct = async(req,res,next)=>{
     const product = await producto.findById(req.params.id) //variable de tipo modificable
     if(!product) {//Verifica que el objeto no exista para finalizar el proceso
@@ -68,7 +68,7 @@ exports.deleteProduct = async(req,res,next)=>{
             message:"No se encontro ese producto"
         })
     }
-    await product.remove();//Eliminamos el proceso
+    await product.remove();//Se elimina el proceso
     res.status(200).json({
         success:true,
         message:"Producto eliminado correctamente"
